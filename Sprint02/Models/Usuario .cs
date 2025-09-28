@@ -8,7 +8,7 @@ namespace Sprint02.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long IdUsuario {  get; set; }
+        public int IdUsuario {  get; set; }
 
         [Required]
         [Column("nome")]
@@ -24,7 +24,7 @@ namespace Sprint02.Models
 
         public Usuario() { }
 
-        public Usuario(long idUsuario, string nome, string email, string senha)
+        public Usuario(int idUsuario, string nome, string email, string senha)
         {
             IdUsuario = idUsuario;
             Nome = nome;

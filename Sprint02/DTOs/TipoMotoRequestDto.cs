@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Sprint02.DTOs
 {
@@ -6,6 +7,7 @@ namespace Sprint02.DTOs
     {
         [Required(ErrorMessage = "O nome do tipo é obrigatório")]
         [StringLength(60, ErrorMessage = "O nome do tipo deve ter no máximo 60 caracteres")]
+        [SwaggerSchema("Nome do tipo de moto")]
         public string NomeTipo { get; set; }
     }
 }

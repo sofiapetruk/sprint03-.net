@@ -2,8 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Sprint02.Data;
 using Sprint02.Service;
 using Sprint02.DTOs;
-using Oracle.EntityFrameworkCore;
-
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,15 +17,31 @@ builder.Services.AddScoped<IService<UsuarioResponseDto, UsuarioRequestDto>, Usua
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "API SmartMottu",
+        Version = "v1",
+        Description = "API para gerenciar Usuários, Motos, Tipos e Status para a empresa Mottu"
+    });
+
+    c.EnableAnnotations();
+});
+
+builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>();
+
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API SmartMottu v1");
+    c.RoutePrefix = string.Empty; 
+});
+
+
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
