@@ -63,11 +63,6 @@
 | PUT         | [api/tipo-moto/{id}]  | Atualizar um tipo moto |
 | DELETE      | [api/tipo-moto/{id}]  | Remover uma tipo moto  |
 
-
-
-http://localhost:5192/index.html
-http://localhost:5192/
-
-http://localhost:5192/swagger/v1/swagger.json
-
-dotnet run
+## Documentação Interativa (Swagger)
+  -  http://localhost:5192/ **OU** http://localhost:5192/index.html -- Para acessar o swagger e conseguir fazer os inputs dos métodos CRUD
+  -  http://localhost:5192/swagger/v1/swagger.json -- Para acessar o swagger em json
