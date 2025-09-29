@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Sprint02.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/tipo-moto")]
     public class TipoMotoController : ControllerBase
     {
         private readonly IService<TipoMotoResponseDto, TipoMotoRequestDto> _service;
