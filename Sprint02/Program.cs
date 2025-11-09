@@ -99,6 +99,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
     c.EnableAnnotations();
+    c.ExampleFilters();
 });
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>();

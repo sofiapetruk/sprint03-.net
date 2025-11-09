@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sprint02.NovaPasta;
+using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace Sprint02.Controllers
 {
@@ -16,6 +18,12 @@ namespace Sprint02.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
+        [SwaggerOperation(
+            Summary = "Realiza previsão de moto recomendada",
+            Description = "Utiliza um modelo de Machine Learning para prever qual moto (CÓD. 0 ou CÓD. 1) é mais adequada com base nos dados fornecidos."
+        )]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult PreverMoto([FromBody] DadosMotos dados)
         {
             var resultadoPrevisao = _treinamento.Predict(dados);

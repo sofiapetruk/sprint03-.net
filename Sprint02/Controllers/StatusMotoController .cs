@@ -2,8 +2,10 @@
 using Sprint02.DTOs;
 using Sprint02.Exceptions;
 using Sprint02.Hateos;
+using Sprint02.NovaPasta1;
 using Sprint02.Service;
 using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace Sprint02.Controllers
 {
@@ -28,6 +30,7 @@ namespace Sprint02.Controllers
         [ProducesResponseType(typeof(StatusMotoResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [SwaggerRequestExample(typeof(StatusMotoRequestDto), typeof(StatusMotoRequestExample))]
         public async Task<ActionResult<StatusMotoResponseDto>> Create([FromBody] StatusMotoRequestDto dto)
         {
             if (!ModelState.IsValid)

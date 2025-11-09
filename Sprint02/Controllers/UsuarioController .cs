@@ -2,8 +2,10 @@
 using Sprint02.DTOs;
 using Sprint02.Exceptions;
 using Sprint02.Hateos;
+using Sprint02.NovaPasta1;
 using Sprint02.Service;
 using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace Sprint02.Controllers
 {
@@ -30,6 +32,7 @@ namespace Sprint02.Controllers
         )]
         [ProducesResponseType(typeof(UsuarioResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [SwaggerRequestExample(typeof(UsuarioRequestDto), typeof(UsuarioRequestExample))]
         public async Task<ActionResult<UsuarioResponseDto>> Create([FromBody] UsuarioRequestDto dto)
         {
             try
@@ -94,6 +97,7 @@ namespace Sprint02.Controllers
         )]
         [ProducesResponseType(typeof(UsuarioResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerRequestExample(typeof(UsuarioRequestDto), typeof(UsuarioRequestExample))]
         public async Task<ActionResult<UsuarioResponseDto>> Update(
             [FromRoute, SwaggerParameter("Identificador único do usuário a ser atualizado")] int id,
             [FromBody] UsuarioRequestDto dto)

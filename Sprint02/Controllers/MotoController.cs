@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sprint02.DTOs;
 using Sprint02.Hateos;
+using Sprint02.NovaPasta1;
 using Sprint02.Service;
 using Swashbuckle.AspNetCore.Annotations;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace Sprint02.Controllers
 {
@@ -27,6 +29,7 @@ namespace Sprint02.Controllers
             )]
         [ProducesResponseType(typeof(MotoResponseDto), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [SwaggerRequestExample(typeof(MotoRequestDto), typeof(MotoRequestExample))]
         public async Task<ActionResult<MotoResponseDto>> Create([FromBody] MotoRequestDto dto)
         {
             var moto = await _service.Save(dto);
@@ -79,6 +82,7 @@ namespace Sprint02.Controllers
         )]
         [ProducesResponseType(typeof(MotoResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [SwaggerRequestExample(typeof(MotoRequestDto), typeof(MotoRequestExample))]
         public async Task<ActionResult<MotoResponseDto>> Update([FromRoute] int id, [FromBody] MotoRequestDto dto)
         {
             var moto = await _service.Update(id, dto);
