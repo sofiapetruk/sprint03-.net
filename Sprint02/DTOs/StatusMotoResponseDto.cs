@@ -1,4 +1,5 @@
-﻿using Sprint02.Hateos;
+﻿using Sprint02.Enuns;
+using Sprint02.Hateos;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Sprint02.DTOs

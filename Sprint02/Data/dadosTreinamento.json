@@ -1,0 +1,402 @@
+[
+  {
+    "Idade": 25,
+    "RendaMensal": 2500.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 38,
+    "RendaMensal": 4500.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 21,
+    "RendaMensal": 1800.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 45,
+    "RendaMensal": 6000.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 30,
+    "RendaMensal": 3200.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 28,
+    "RendaMensal": 2200.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 42,
+    "RendaMensal": 5100.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 19,
+    "RendaMensal": 1500.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 50,
+    "RendaMensal": 7500.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 1,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 33,
+    "RendaMensal": 3800.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 23,
+    "RendaMensal": 2000.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 40,
+    "RendaMensal": 4800.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 27,
+    "RendaMensal": 2600.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 48,
+    "RendaMensal": 6500.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 35,
+    "RendaMensal": 3000.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 26,
+    "RendaMensal": 2400.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 39,
+    "RendaMensal": 4600.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 22,
+    "RendaMensal": 1900.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 46,
+    "RendaMensal": 6200.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 31,
+    "RendaMensal": 3400.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 29,
+    "RendaMensal": 2700.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 41,
+    "RendaMensal": 4900.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 20,
+    "RendaMensal": 1600.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 52,
+    "RendaMensal": 8000.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 1,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 34,
+    "RendaMensal": 4000.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 24,
+    "RendaMensal": 2100.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 43,
+    "RendaMensal": 5300.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 27,
+    "RendaMensal": 2300.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 47,
+    "RendaMensal": 6700.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 1,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 36,
+    "RendaMensal": 3100.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 25,
+    "RendaMensal": 2250.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 37,
+    "RendaMensal": 4400.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 23,
+    "RendaMensal": 1750.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 44,
+    "RendaMensal": 5800.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 32,
+    "RendaMensal": 3300.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 26,
+    "RendaMensal": 2550.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 40,
+    "RendaMensal": 4700.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 21,
+    "RendaMensal": 1650.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 49,
+    "RendaMensal": 7000.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 1,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 35,
+    "RendaMensal": 3900.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 28,
+    "RendaMensal": 2650.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 42,
+    "RendaMensal": 5000.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 24,
+    "RendaMensal": 2050.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 2,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 46,
+    "RendaMensal": 6300.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 2,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 30,
+    "RendaMensal": 3150.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 29,
+    "RendaMensal": 2800.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 4,
+    "PreferenciaPotencia": 3,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 41,
+    "RendaMensal": 5200.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 22,
+    "RendaMensal": 1850.00,
+    "UsoPrincipal": "Delivery",
+    "PreferenciaEconomia": 5,
+    "PreferenciaPotencia": 1,
+    "MotoEscolhida": 0
+  },
+  {
+    "Idade": 55,
+    "RendaMensal": 8500.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 1,
+    "PreferenciaPotencia": 5,
+    "MotoEscolhida": 1
+  },
+  {
+    "Idade": 33,
+    "RendaMensal": 3700.00,
+    "UsoPrincipal": "Pessoal",
+    "PreferenciaEconomia": 3,
+    "PreferenciaPotencia": 4,
+    "MotoEscolhida": 1
+  }
+]

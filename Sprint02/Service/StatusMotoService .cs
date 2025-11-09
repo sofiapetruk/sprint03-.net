@@ -1,14 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sprint02.Data;
 using Sprint02.DTOs;
+using Sprint02.Enuns;
+using Sprint02.Exceptions;
 using Sprint02.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Sprint02.Service
 {
     public class StatusMotoService : IService<StatusMotoResponseDto, StatusMotoRequestDto>
     {
         private readonly AppDbContext _appDbContext;
-
         private const string NOT_FOUND_MESSAGE = "Status de moto com esse ID não foi encontrado.";
 
         public StatusMotoService(AppDbContext appDbContext)
@@ -18,14 +23,28 @@ namespace Sprint02.Service
 
         public async Task<StatusMotoResponseDto> Save(StatusMotoRequestDto dto)
         {
+            string statusName = Enum.GetName(typeof(StatusEnum), dto.Status)
+                                ?? dto.Status.ToString();
+
             var entity = new StatusMoto
             {
-                Status = dto.Status,
+                Status = statusName,
                 Data = dto.Data
             };
 
-            _appDbContext.StatusMotos.Add(entity);
-            await _appDbContext.SaveChangesAsync();
+            try
+            {
+                _appDbContext.StatusMotos.Add(entity);
+                await _appDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException?.Message.Contains("ORA-00001") == true)
+                {
+                    throw new ConflictException($"O Status '{statusName}' já se encontra cadastrado no sistema e não pode ser duplicado.");
+                }
+                throw; 
+            }
 
             return new StatusMotoResponseDto
             {
@@ -48,7 +67,7 @@ namespace Sprint02.Service
                 .Select(s => new StatusMotoResponseDto
                 {
                     IdStatus = s.IdStatus,
-                    Status = s.Status,
+                    Status = s.Status, 
                     Data = s.Data
                 })
                 .ToListAsync();
@@ -62,7 +81,7 @@ namespace Sprint02.Service
                 .Select(s => new StatusMotoResponseDto
                 {
                     IdStatus = s.IdStatus,
-                    Status = s.Status,
+                    Status = s.Status, 
                     Data = s.Data
                 })
                 .FirstOrDefaultAsync();
@@ -76,7 +95,11 @@ namespace Sprint02.Service
             var entity = await _appDbContext.StatusMotos.FindAsync(id);
             if (entity == null) throw new KeyNotFoundException(NOT_FOUND_MESSAGE);
 
-            entity.Status = dto.Status;
+            string statusName = Enum.GetName(typeof(StatusEnum), dto.Status)
+                                ?? dto.Status.ToString();
+
+     
+            entity.Status = statusName;
             entity.Data = dto.Data;
 
             await _appDbContext.SaveChangesAsync();
@@ -84,7 +107,7 @@ namespace Sprint02.Service
             return new StatusMotoResponseDto
             {
                 IdStatus = entity.IdStatus,
-                Status = entity.Status,
+                Status = entity.Status, 
                 Data = entity.Data
             };
         }

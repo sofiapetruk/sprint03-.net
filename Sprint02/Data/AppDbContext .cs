@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sprint02.Models;
-
 namespace Sprint02.Data
 {
     public class AppDbContext : DbContext
@@ -55,7 +54,14 @@ namespace Sprint02.Data
                 entity.Property(u => u.Senha).IsRequired();
             });
 
+          
+
+            modelBuilder.Entity<StatusMoto>()
+                .HasIndex(s => s.Status)
+                .IsUnique();
+
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

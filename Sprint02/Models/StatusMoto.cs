@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Sprint02.Enuns;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Sprint02.Models

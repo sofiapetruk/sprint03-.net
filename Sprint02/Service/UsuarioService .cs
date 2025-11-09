@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sprint02.Data;
 using Sprint02.DTOs;
+using Sprint02.Exceptions;
 using Sprint02.Models;
 
 namespace Sprint02.Service
@@ -22,11 +23,24 @@ namespace Sprint02.Service
             {
                 Nome = dto.Nome,
                 Email = dto.Email,
-                Senha = dto.Senha 
+                Senha = dto.Senha
             };
 
-            _appDbContext.Usuarios.Add(entity);
-            await _appDbContext.SaveChangesAsync();
+            try
+            {
+                _appDbContext.Usuarios.Add(entity);
+                await _appDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+  
+                if (ex.InnerException?.Message.Contains("ORA-00001") == true)
+                {
+                    throw new ConflictException($"Já existe um e-mail cadastrado com o valor '{dto.Email}'. Escolha outro.");
+                }
+
+                throw;
+            }
 
             return new UsuarioResponseDto
             {
@@ -75,13 +89,26 @@ namespace Sprint02.Service
         public async Task<UsuarioResponseDto> Update(int id, UsuarioRequestDto dto)
         {
             var entity = await _appDbContext.Usuarios.FindAsync(id);
+
             if (entity == null) throw new KeyNotFoundException(NOT_FOUND_MESSAGE);
 
             entity.Nome = dto.Nome;
             entity.Email = dto.Email;
             entity.Senha = dto.Senha;
 
-            await _appDbContext.SaveChangesAsync();
+            try
+            {
+                await _appDbContext.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException?.Message.Contains("ORA-00001") == true)
+                {
+                    throw new ConflictException($"Já existe um e-mail cadastrado com o valor '{dto.Email}' para outro usuário. Escolha outro.");
+                }
+
+                throw;
+            }
 
             return new UsuarioResponseDto
             {

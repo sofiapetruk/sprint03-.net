@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sprint02.DTOs;
+using Sprint02.Exceptions;
 using Sprint02.Hateos;
 using Sprint02.Service;
 using Swashbuckle.AspNetCore.Annotations;
@@ -7,7 +8,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Sprint02.Controllers
 {
     [ApiController]
-    [Route("api/tipo-moto")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class TipoMotoController : ControllerBase
     {
         private readonly IService<TipoMotoResponseDto, TipoMotoRequestDto> _service;
@@ -65,26 +67,35 @@ namespace Sprint02.Controllers
         public async Task<ActionResult<TipoMotoResponseDto>> ReadById(
             [FromRoute, SwaggerParameter("Identificador único do tipo de moto a ser consultado")] int id)
         {
-            var tipo = await _service.GetById(id);
-            AddLinks(tipo);
-            return Ok(tipo);
+            try
+            {
+                var status = await _service.GetById(id);
+
+                AddLinks(status);
+                return Ok(status);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (System.Collections.Generic.KeyNotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "Ocorreu um erro interno inesperado ao processar a requisição." });
+            }
+
         }
 
-        [HttpPut("{id:int}")]
-        [SwaggerOperation(
-            Summary = "Atualizar tipo de moto",
-            Description = "Atualiza as informações de um tipo de moto existente."
-        )]
-        [ProducesResponseType(typeof(TipoMotoResponseDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TipoMotoResponseDto>> Update(
-            [FromRoute, SwaggerParameter("Identificador único do tipo de moto a ser atualizado")] int id,
-            [FromBody] TipoMotoRequestDto dto)
-        {
-            var updated = await _service.Update(id, dto);
-            AddLinks(updated);
-            return Ok(updated);
-        }
 
         [HttpDelete("{id:int}")]
         [SwaggerOperation(
@@ -96,8 +107,30 @@ namespace Sprint02.Controllers
         public async Task<IActionResult> Delete(
             [FromRoute, SwaggerParameter("Identificador único do tipo de moto a ser removido")] int id)
         {
-            await _service.DeleteById(id);
-            return NoContent();
+            try
+            {
+                await _service.DeleteById(id);
+                return NoContent();
+            }
+            catch (System.Collections.Generic.KeyNotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "Ocorreu um erro interno inesperado ao processar a requisição." });
+            }
         }
 
         private void AddLinks(TipoMotoResponseDto tipo)
@@ -106,11 +139,6 @@ namespace Sprint02.Controllers
                 _linkGenerator.GetUriByAction(HttpContext, nameof(ReadById), "TipoMoto", new { id = tipo.IdTipo }),
                 "self",
                 "GET"
-            ));
-            tipo.Links.Add(new Link(
-                _linkGenerator.GetUriByAction(HttpContext, nameof(Update), "TipoMoto", new { id = tipo.IdTipo }),
-                "update",
-                "PUT"
             ));
             tipo.Links.Add(new Link(
                 _linkGenerator.GetUriByAction(HttpContext, nameof(Delete), "TipoMoto", new { id = tipo.IdTipo }),

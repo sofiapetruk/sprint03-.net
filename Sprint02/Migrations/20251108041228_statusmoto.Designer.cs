@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using Sprint02.Data;
@@ -11,16 +12,62 @@ using Sprint02.Data;
 namespace Sprint02.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251108041228_statusmoto")]
+    partial class statusmoto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.10")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Sprint02.Models.Aluguel", b =>
+                {
+                    b.Property<int>("IdAluguel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("id_aluguel");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAluguel"));
+
+                    b.Property<DateTime>("DataFim")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("dataFim");
+
+                    b.Property<DateTime>("DataInicio")
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("dataInicio");
+
+                    b.Property<int>("MotoId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("fk_moto_id");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("NVARCHAR2(50)")
+                        .HasColumnName("status");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("fk_usuario_id");
+
+                    b.Property<double>("ValorTotal")
+                        .HasColumnType("BINARY_DOUBLE")
+                        .HasColumnName("valorTotal");
+
+                    b.HasKey("IdAluguel");
+
+                    b.HasIndex("MotoId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Alugueis");
+                });
 
             modelBuilder.Entity("Sprint02.Models.Moto", b =>
                 {
@@ -80,13 +127,10 @@ namespace Sprint02.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(450)")
+                        .HasColumnType("NVARCHAR2(2000)")
                         .HasColumnName("status");
 
                     b.HasKey("IdStatus");
-
-                    b.HasIndex("Status")
-                        .IsUnique();
 
                     b.ToTable("T_STATUS_MOTO");
                 });
@@ -138,6 +182,27 @@ namespace Sprint02.Migrations
                         .IsUnique();
 
                     b.ToTable("T_USUARIO");
+                });
+
+            modelBuilder.Entity("Sprint02.Models.Aluguel", b =>
+                {
+                    b.HasOne("Sprint02.Models.Moto", "Moto")
+                        .WithMany()
+                        .HasForeignKey("MotoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Aluguel_Moto");
+
+                    b.HasOne("Sprint02.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Aluguel_Usuario");
+
+                    b.Navigation("Moto");
+
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Sprint02.Models.Moto", b =>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sprint02.DTOs;
+using Sprint02.Exceptions;
 using Sprint02.Hateos;
 using Sprint02.Service;
 using Swashbuckle.AspNetCore.Annotations;
@@ -7,7 +8,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace Sprint02.Controllers
 {
     [ApiController]
-    [Route("api/usuario")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class UsuarioController : Controller
     {
         private readonly IService<UsuarioResponseDto, UsuarioRequestDto> _service;
@@ -30,9 +32,24 @@ namespace Sprint02.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<UsuarioResponseDto>> Create([FromBody] UsuarioRequestDto dto)
         {
-            var user = await _service.Save(dto);
-            AddLinks(user);
-            return CreatedAtAction(nameof(ReadById), new { id = user.IdUsuario }, user);
+            try
+            {
+                var user = await _service.Save(dto);
+                AddLinks(user);
+                return CreatedAtAction(nameof(ReadById), new { id = user.IdUsuario }, user);
+            }
+            catch (ConflictException ex) 
+            {
+                return Conflict(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "Ocorreu um erro interno inesperado ao processar a requisição." });
+            }
         }
 
         [HttpGet]
@@ -81,9 +98,40 @@ namespace Sprint02.Controllers
             [FromRoute, SwaggerParameter("Identificador único do usuário a ser atualizado")] int id,
             [FromBody] UsuarioRequestDto dto)
         {
-            var user = await _service.Update(id, dto);
-            AddLinks(user);
-            return Ok(user);
+            try
+            {
+                var status = await _service.GetById(id);
+
+                AddLinks(status);
+                return Ok(status);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (System.Collections.Generic.KeyNotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (ConflictException ex)
+            {
+                return Conflict(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "Ocorreu um erro interno inesperado ao processar a requisição." });
+            }
+
         }
 
         [HttpDelete("{id:int}")]
@@ -96,8 +144,32 @@ namespace Sprint02.Controllers
         public async Task<ActionResult> Delete(
             [FromRoute, SwaggerParameter("Identificador único do usuário a ser removido")] int id)
         {
-            await _service.DeleteById(id);
-            return NoContent();
+            try
+            {
+                var user = await _service.GetById(id);
+
+                AddLinks(user);
+                return Ok(user);
+            }
+            catch (System.Collections.Generic.KeyNotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message 
+                });
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new { message = "Ocorreu um erro interno inesperado ao processar a requisição." });
+            }
         }
 
         private void AddLinks(UsuarioResponseDto user)

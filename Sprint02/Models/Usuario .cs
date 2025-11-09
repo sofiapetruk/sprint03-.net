@@ -21,16 +21,5 @@ namespace Sprint02.Models
         [Required]
         [Column("senha")]
         public string Senha { get; set; }
-
-        public Usuario() { }
-
-        public Usuario(int idUsuario, string nome, string email, string senha)
-        {
-            IdUsuario = idUsuario;
-            Nome = nome;
-            Email = email;
-            Senha = senha;
-        }
-
     }
 }
