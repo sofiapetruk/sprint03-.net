@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Compile Remove="ML.cs" />
+    <Compile Remove="repositoy\ITipoMotoService.cs" />
   </ItemGroup>
 
   <ItemGroup>
