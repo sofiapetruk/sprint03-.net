@@ -72,7 +72,7 @@ Endpoint para verificar se o seu bancos de dados está saúdavel
   - http://localhost:5192/health
 
 ## Documentação Interativa (Swagger)
-  -  http://localhost:5192/ **OU** http://localhost:5192/index.html -- Para acessar o swagger e conseguir fazer os inputs dos métodos CRUD
+  -  http://localhost:5192/swagger/index.html -- Para acessar o swagger e conseguir fazer os inputs dos métodos CRUD
   -  http://localhost:5192/swagger/v1/swagger.json -- Para acessar o swagger em json
 
 ## Instruções para Executação da API
@@ -89,4 +89,4 @@ Endpoint para verificar se o seu bancos de dados está saúdavel
   - dotnet run
 
 ### 5. Acesso a API
-  - http://localhost:5192
+  - http://localhost:5192/swagger/index.html
