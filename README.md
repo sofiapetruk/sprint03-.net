@@ -90,3 +90,7 @@ Endpoint para verificar se o seu bancos de dados está saúdavel
 
 ### 5. Acesso a API
   - http://localhost:5192/swagger/index.html
+    
+## Instruções para rodar os Testes Unitários
+  1. cd TestProject
+  2.  dotnet test
